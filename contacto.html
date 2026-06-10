@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lali Garcia — Contacto</title>
+  <meta name="description" content="Contacto con Lali Garcia, artista visual.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <a class="site-title" href="index.html">Lali Garcia</a>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
+  <nav id="main-nav">
+    <a href="index.html">Obra</a>
+    <a href="bio.html">Bio</a>
+    <a href="videos.html">Videos</a>
+    <a href="contacto.html" class="active">Contacto</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="contact-wrap">
+
+    <div class="contact-intro">
+      <h2>Contacto</h2>
+      <p>Consultas sobre obra, exposiciones y proyectos.</p>
+    </div>
+
+    <!-- Formulario: conectar con Formspree, Netlify Forms u otro servicio -->
+    <form class="contact-form" action="#" method="POST" id="contact-form">
+
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="asunto">Asunto</label>
+        <input type="text" id="asunto" name="asunto">
+      </div>
+
+      <div class="form-group">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Enviar</button>
+
+    </form>
+
+    <div class="contact-links">
+      <span class="contact-label">O escribí directamente</span>
+      <a href="mailto:contacto@laligarcia.com">contacto@laligarcia.com</a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <p>&copy; 2024 Lali Garcia &mdash; Todos los derechos reservados</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
