@@ -1,0 +1,50 @@
+{
+  "foto": "https://picsum.photos/seed/lgbio01/680/900",
+  "paragraphs": [
+    "Lali García Almeyda (Lima, 1978) es una pintora figurativa vinculada al movimiento del realismo contemporáneo. Su obra explora la figura humana como espacio de observación y reflexión, a menudo a través del retrato, donde la presencia y la mirada se convierten en territorios de introspección y ambigüedad poética.",
+    "Lali se dedica inicialmente al diseño y a la ilustración, trabajando para la revista Padres de Cosas y en los portales de RPP y La Mula, donde además escribe su primer blog público en 2010 y publica su primer poemario Hiperestesia. En 2018 decide dedicarse plenamente a la pintura, siguiendo un camino en gran parte autodidacta. En 2020, su trabajo fue seleccionado por 33 Contemporary Gallery (Chicago), marcando su ingreso en la escena internacional.",
+    "Sus pinturas han sido expuestas en museos y galerías de diversos países, entre ellos el Wausau Museum of Contemporary Art (EE. UU., 2020–2021) y Solart Gallery (Dublín, 2021). Ha participado en muestras organizadas por The Bennett Collection, fue finalista del 16.º ARC Salon (MEAM, 2022) y su obra Within – Children of Pandemic forma parte de la colección pública de la Municipalidad de Barranco (Lima).",
+    "En 2022, su trabajo fue incluido en el Lunar Codex – Artists on the Moon Project, una cápsula del tiempo de arte contemporáneo enviada a la Luna. Su obra ha sido reseñada en medios como La Vanguardia (España), American Art Collector, Fine Art Connoisseur (EE. UU.) y Diario Expreso (Lima).",
+    "Vive y trabaja en Lima, Perú."
+  ],
+  "individual": [
+    {
+      "year": "2025",
+      "desc": "Alegorías de lo invisible — Museo Metropolitano de Lima, curaduría de Eleine Rodríguez"
+    },
+    {
+      "year": "2023",
+      "desc": "Antropoceno — Galería José Antonio, Lima"
+    }
+  ],
+  "colectiva": [
+    {
+      "year": "2022",
+      "desc": "Lunar Codex – Artists on the Moon Project (cápsula enviada a la Luna)"
+    },
+    {
+      "year": "2022",
+      "desc": "Finalista, 16.º ARC Salon — MEAM, Barcelona"
+    },
+    {
+      "year": "2022",
+      "desc": "Within – Children of Pandemic ingresa a la colección pública de la Municipalidad de Barranco, Lima"
+    },
+    {
+      "year": "2021",
+      "desc": "Solart Gallery — Dublín, Irlanda"
+    },
+    {
+      "year": "2021",
+      "desc": "The Bennett Collection"
+    },
+    {
+      "year": "2020",
+      "desc": "Wausau Museum of Contemporary Art — Wisconsin, EE. UU."
+    },
+    {
+      "year": "2020",
+      "desc": "33 Contemporary Gallery — Chicago, EE. UU."
+    }
+  ]
+}

@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lali García Almeyda — Bio</title>
   <meta name="description" content="Biografía y trayectoria de Lali García Almeyda, pintora figurativa peruana.">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="bio">
 
 <header>
   <a class="site-title" href="index.html">Lali García Almeyda</a>
@@ -22,97 +23,12 @@
 
 <main>
   <div class="bio-layout">
-
     <div class="bio-photo">
-      <!-- Reemplazar con foto real de la artista -->
-      <img src="https://picsum.photos/seed/lgbio01/680/900" alt="Lali García Almeyda" loading="eager">
+      <img id="bio-foto" src="" alt="Lali García Almeyda" loading="eager">
     </div>
-
-    <div class="bio-content">
-      <h1 class="bio-name">Lali García Almeyda</h1>
-
-      <p>
-        Lali García Almeyda (Lima, 1978) es una pintora figurativa vinculada al movimiento del
-        realismo contemporáneo. Su obra explora la figura humana como espacio de observación y
-        reflexión, a menudo a través del retrato, donde la presencia y la mirada se convierten
-        en territorios de introspección y ambigüedad poética.
-      </p>
-
-      <p>
-        Lali se dedica inicialmente al diseño y a la ilustración, trabajando para la revista
-        <em>Padres</em> de <em>Cosas</em> y en los portales de RPP y La Mula, donde además escribe
-        su primer blog público en 2010 y publica su primer poemario <em>Hiperestesia</em>.
-        En 2018 decide dedicarse plenamente a la pintura, siguiendo un camino en gran parte
-        autodidacta. En 2020, su trabajo fue seleccionado por 33 Contemporary Gallery (Chicago),
-        marcando su ingreso en la escena internacional.
-      </p>
-
-      <p>
-        Sus pinturas han sido expuestas en museos y galerías de diversos países, entre ellos el
-        Wausau Museum of Contemporary Art (EE. UU., 2020–2021) y Solart Gallery (Dublín, 2021).
-        Ha participado en muestras organizadas por The Bennett Collection, fue finalista del
-        16.º ARC Salon (MEAM, 2022) y su obra <em>Within – Children of Pandemic</em> forma parte
-        de la colección pública de la Municipalidad de Barranco (Lima).
-      </p>
-
-      <p>
-        En 2022, su trabajo fue incluido en el <em>Lunar Codex – Artists on the Moon Project</em>,
-        una cápsula del tiempo de arte contemporáneo enviada a la Luna. Su obra ha sido reseñada
-        en medios como <em>La Vanguardia</em> (España), <em>American Art Collector</em>,
-        <em>Fine Art Connoisseur</em> (EE. UU.) y <em>Diario Expreso</em> (Lima).
-      </p>
-
-      <p>Vive y trabaja en Lima, Perú.</p>
-
-      <h3>Exposiciones individuales</h3>
-      <ul class="expo-list">
-        <li>
-          <span class="year">2025</span>
-          <span><em>Alegorías de lo invisible</em> &mdash; Museo Metropolitano de Lima, curaduría de Eleine Rodríguez</span>
-        </li>
-        <li>
-          <span class="year">2023</span>
-          <span><em>Antropoceno</em> &mdash; Galería José Antonio, Lima</span>
-        </li>
-      </ul>
-
-      <h3>Exposiciones colectivas y reconocimientos</h3>
-      <ul class="expo-list">
-        <li>
-          <span class="year">2022</span>
-          <span>Lunar Codex – Artists on the Moon Project (cápsula enviada a la Luna)</span>
-        </li>
-        <li>
-          <span class="year">2022</span>
-          <span>Finalista, 16.º ARC Salon &mdash; MEAM, Barcelona</span>
-        </li>
-        <li>
-          <span class="year">2022</span>
-          <span><em>Within – Children of Pandemic</em> ingresa a la colección pública de la Municipalidad de Barranco, Lima</span>
-        </li>
-        <li>
-          <span class="year">2021</span>
-          <span>Solart Gallery &mdash; Dublín, Irlanda</span>
-        </li>
-        <li>
-          <span class="year">2021</span>
-          <span>The Bennett Collection</span>
-        </li>
-        <li>
-          <span class="year">2020</span>
-          <span>Wausau Museum of Contemporary Art &mdash; Wisconsin, EE. UU.</span>
-        </li>
-        <li>
-          <span class="year">2020</span>
-          <span>33 Contemporary Gallery &mdash; Chicago, EE. UU.</span>
-        </li>
-      </ul>
-
-      <a class="bio-cv-link" href="cv-lali-garcia-almeyda.pdf" target="_blank" rel="noopener">
-        &#8595;&nbsp;&nbsp;Descargar CV completo
-      </a>
+    <div class="bio-content" id="bio-content">
+      <!-- renderizado por JS desde content/bio.json -->
     </div>
-
   </div>
 </main>
 

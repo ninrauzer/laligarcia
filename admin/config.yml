@@ -1,0 +1,110 @@
+# Decap CMS — Lali García Almeyda
+# Opción A (Netlify Identity): backend git-gateway — activar en dashboard de Netlify
+# Opción B (Coolify OAuth proxy): cambiar a backend github + base_url de tu proxy
+
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: images/obras
+public_folder: /images/obras
+
+locale: es
+
+collections:
+
+  # ── PINTURAS ──────────────────────────────────────────────────────────────
+  - name: "obras"
+    label: "Pinturas"
+    files:
+      - label: "Todas las pinturas"
+        name: "obras"
+        file: "content/obras.json"
+        fields:
+          - label: "Pinturas"
+            name: "obras"
+            widget: "list"
+            label_singular: "Pintura"
+            summary: "{{fields.year}} — {{fields.title}}"
+            fields:
+              - { label: "Año", name: "year", widget: "string", hint: "Ej: 2024" }
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Técnica", name: "tecnica", widget: "string", hint: "Ej: Óleo sobre tela" }
+              - { label: "Dimensiones", name: "dimensiones", widget: "string", hint: "Ej: 80 × 60 cm" }
+              - { label: "Imagen", name: "src", widget: "image" }
+              - label: "Orientación de la imagen"
+                name: "orientacion"
+                widget: "select"
+                options:
+                  - { label: "Vertical (retrato)", value: "portrait" }
+                  - { label: "Horizontal (paisaje)", value: "landscape" }
+                  - { label: "Cuadrada", value: "square" }
+                default: "portrait"
+
+  # ── BIO ───────────────────────────────────────────────────────────────────
+  - name: "bio"
+    label: "Bio"
+    files:
+      - label: "Biografía"
+        name: "bio"
+        file: "content/bio.json"
+        fields:
+          - label: "Foto de la artista"
+            name: "foto"
+            widget: "image"
+            media_folder: "/images/bio"
+            public_folder: "/images/bio"
+          - label: "Párrafos de texto"
+            name: "paragraphs"
+            widget: "list"
+            label_singular: "Párrafo"
+            field: { label: "Texto", name: "text", widget: "text" }
+          - label: "Exposiciones individuales"
+            name: "individual"
+            widget: "list"
+            label_singular: "Exposición individual"
+            summary: "{{fields.year}} — {{fields.desc}}"
+            fields:
+              - { label: "Año", name: "year", widget: "string" }
+              - { label: "Descripción", name: "desc", widget: "string" }
+          - label: "Exposiciones colectivas y reconocimientos"
+            name: "colectiva"
+            widget: "list"
+            label_singular: "Exposición / Reconocimiento"
+            summary: "{{fields.year}} — {{fields.desc}}"
+            fields:
+              - { label: "Año", name: "year", widget: "string" }
+              - { label: "Descripción", name: "desc", widget: "string" }
+
+  # ── VIDEOS ────────────────────────────────────────────────────────────────
+  - name: "videos"
+    label: "Videos"
+    files:
+      - label: "Videos"
+        name: "videos"
+        file: "content/videos.json"
+        fields:
+          - label: "Videos"
+            name: "videos"
+            widget: "list"
+            label_singular: "Video"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Información (tipo · fecha)", name: "info", widget: "string" }
+              - label: "URL embed (YouTube o Vimeo)"
+                name: "embedUrl"
+                widget: "string"
+                required: false
+                hint: "YouTube: https://www.youtube.com/embed/ID — Vimeo: https://player.vimeo.com/video/ID — Dejar vacío si todavía no hay video."
+
+  # ── CONTACTO ──────────────────────────────────────────────────────────────
+  - name: "meta"
+    label: "Datos de contacto"
+    files:
+      - label: "Contacto"
+        name: "meta"
+        file: "content/meta.json"
+        fields:
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Instagram (URL completa)", name: "instagram", widget: "string" }

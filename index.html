@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lali García Almeyda — Obra</title>
   <meta name="description" content="Obra pictórica de Lali García Almeyda, pintora figurativa peruana.">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="obras">
 
 <header>
   <a class="site-title" href="index.html">Lali García Almeyda</a>
@@ -20,281 +21,20 @@
   </nav>
 </header>
 
-<main>
+<main id="main-obras">
+  <div class="year-tabs" id="year-tabs" role="tablist" aria-label="Seleccionar año"></div>
+  <!-- pinturas renderizadas por JS desde content/obras.json -->
 
-  <div class="year-tabs" role="tablist" aria-label="Seleccionar año">
-    <button class="tab-btn active" role="tab" data-tab="2024" aria-selected="true" aria-controls="tab-2024">2024</button>
-    <button class="tab-btn" role="tab" data-tab="2023" aria-selected="false" aria-controls="tab-2023">2023</button>
-    <button class="tab-btn" role="tab" data-tab="2022" aria-selected="false" aria-controls="tab-2022">2022</button>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lb-close" aria-label="Cerrar">&#215;</button>
+      <img id="lb-img" src="" alt="">
+      <p class="lightbox-caption" id="lb-caption"></p>
+    </div>
+    <button class="lightbox-nav" id="lb-prev" aria-label="Obra anterior">&#8592;</button>
+    <button class="lightbox-nav" id="lb-next" aria-label="Obra siguiente">&#8594;</button>
   </div>
-
-  <!-- ── 2024 ── -->
-  <section id="tab-2024" class="obra-section active" role="tabpanel">
-    <div class="obra-grid">
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2401/600/800"
-           data-title="Sin título I"
-           data-meta="Óleo sobre tela · 80 × 60 cm · 2024">
-        <div class="obra-img-wrap portrait">
-          <img src="https://picsum.photos/seed/lg2401/600/800" alt="Sin título I, 2024" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">Sin título I</span>
-          <span class="meta">Óleo sobre tela · 80 × 60 cm</span>
-        </div>
-      </div>
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2402/800/600"
-           data-title="Composición en azul"
-           data-meta="Acrílico sobre tela · 100 × 80 cm · 2024">
-        <div class="obra-img-wrap landscape">
-          <img src="https://picsum.photos/seed/lg2402/800/600" alt="Composición en azul, 2024" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">Composición en azul</span>
-          <span class="meta">Acrílico sobre tela · 100 × 80 cm</span>
-        </div>
-      </div>
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2403/600/800"
-           data-title="Rojo oscuro"
-           data-meta="Óleo sobre tela · 120 × 90 cm · 2024">
-        <div class="obra-img-wrap portrait">
-          <img src="https://picsum.photos/seed/lg2403/600/800" alt="Rojo oscuro, 2024" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">Rojo oscuro</span>
-          <span class="meta">Óleo sobre tela · 120 × 90 cm</span>
-        </div>
-      </div>
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2404/600/600"
-           data-title="Estudio para figura"
-           data-meta="Técnica mixta sobre papel · 50 × 50 cm · 2024">
-        <div class="obra-img-wrap square">
-          <img src="https://picsum.photos/seed/lg2404/600/600" alt="Estudio para figura, 2024" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">Estudio para figura</span>
-          <span class="meta">Técnica mixta · 50 × 50 cm</span>
-        </div>
-      </div>
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2405/600/800"
-           data-title="Tarde de verano"
-           data-meta="Óleo sobre tela · 70 × 55 cm · 2024">
-        <div class="obra-img-wrap portrait">
-          <img src="https://picsum.photos/seed/lg2405/600/800" alt="Tarde de verano, 2024" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">Tarde de verano</span>
-          <span class="meta">Óleo sobre tela · 70 × 55 cm</span>
-        </div>
-      </div>
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2406/800/600"
-           data-title="Sin título II"
-           data-meta="Carbón sobre papel · 60 × 42 cm · 2024">
-        <div class="obra-img-wrap landscape">
-          <img src="https://picsum.photos/seed/lg2406/800/600" alt="Sin título II, 2024" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">Sin título II</span>
-          <span class="meta">Carbón sobre papel · 60 × 42 cm</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ── 2023 ── -->
-  <section id="tab-2023" class="obra-section" role="tabpanel">
-    <div class="obra-grid">
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2301/600/800"
-           data-title="Figura en reposo"
-           data-meta="Óleo sobre tela · 90 × 70 cm · 2023">
-        <div class="obra-img-wrap portrait">
-          <img src="https://picsum.photos/seed/lg2301/600/800" alt="Figura en reposo, 2023" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">Figura en reposo</span>
-          <span class="meta">Óleo sobre tela · 90 × 70 cm</span>
-        </div>
-      </div>
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2302/600/600"
-           data-title="Interior III"
-           data-meta="Acrílico sobre tela · 60 × 60 cm · 2023">
-        <div class="obra-img-wrap square">
-          <img src="https://picsum.photos/seed/lg2302/600/600" alt="Interior III, 2023" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">Interior III</span>
-          <span class="meta">Acrílico sobre tela · 60 × 60 cm</span>
-        </div>
-      </div>
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2303/800/600"
-           data-title="Sin título IV"
-           data-meta="Técnica mixta sobre papel · 80 × 60 cm · 2023">
-        <div class="obra-img-wrap landscape">
-          <img src="https://picsum.photos/seed/lg2303/800/600" alt="Sin título IV, 2023" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">Sin título IV</span>
-          <span class="meta">Técnica mixta · 80 × 60 cm</span>
-        </div>
-      </div>
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2304/600/800"
-           data-title="Composición II"
-           data-meta="Óleo sobre tela · 100 × 70 cm · 2023">
-        <div class="obra-img-wrap portrait">
-          <img src="https://picsum.photos/seed/lg2304/600/800" alt="Composición II, 2023" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">Composición II</span>
-          <span class="meta">Óleo sobre tela · 100 × 70 cm</span>
-        </div>
-      </div>
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2305/600/800"
-           data-title="El jardín"
-           data-meta="Óleo sobre tela · 80 × 60 cm · 2023">
-        <div class="obra-img-wrap portrait">
-          <img src="https://picsum.photos/seed/lg2305/600/800" alt="El jardín, 2023" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">El jardín</span>
-          <span class="meta">Óleo sobre tela · 80 × 60 cm</span>
-        </div>
-      </div>
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2306/600/600"
-           data-title="Abstracción I"
-           data-meta="Acrílico sobre tela · 70 × 70 cm · 2023">
-        <div class="obra-img-wrap square">
-          <img src="https://picsum.photos/seed/lg2306/600/600" alt="Abstracción I, 2023" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">Abstracción I</span>
-          <span class="meta">Acrílico sobre tela · 70 × 70 cm</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ── 2022 ── -->
-  <section id="tab-2022" class="obra-section" role="tabpanel">
-    <div class="obra-grid">
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2201/600/800"
-           data-title="Primera serie I"
-           data-meta="Óleo sobre tela · 90 × 65 cm · 2022">
-        <div class="obra-img-wrap portrait">
-          <img src="https://picsum.photos/seed/lg2201/600/800" alt="Primera serie I, 2022" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">Primera serie I</span>
-          <span class="meta">Óleo sobre tela · 90 × 65 cm</span>
-        </div>
-      </div>
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2202/800/600"
-           data-title="Composición en rojo"
-           data-meta="Acrílico sobre tela · 110 × 80 cm · 2022">
-        <div class="obra-img-wrap landscape">
-          <img src="https://picsum.photos/seed/lg2202/800/600" alt="Composición en rojo, 2022" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">Composición en rojo</span>
-          <span class="meta">Acrílico sobre tela · 110 × 80 cm</span>
-        </div>
-      </div>
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2203/600/800"
-           data-title="Sin título VI"
-           data-meta="Óleo sobre tela · 75 × 55 cm · 2022">
-        <div class="obra-img-wrap portrait">
-          <img src="https://picsum.photos/seed/lg2203/600/800" alt="Sin título VI, 2022" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">Sin título VI</span>
-          <span class="meta">Óleo sobre tela · 75 × 55 cm</span>
-        </div>
-      </div>
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2204/600/600"
-           data-title="Paisaje urbano"
-           data-meta="Técnica mixta · 60 × 60 cm · 2022">
-        <div class="obra-img-wrap square">
-          <img src="https://picsum.photos/seed/lg2204/600/600" alt="Paisaje urbano, 2022" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">Paisaje urbano</span>
-          <span class="meta">Técnica mixta · 60 × 60 cm</span>
-        </div>
-      </div>
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2205/600/800"
-           data-title="Estudio I"
-           data-meta="Carbón sobre papel · 55 × 38 cm · 2022">
-        <div class="obra-img-wrap portrait">
-          <img src="https://picsum.photos/seed/lg2205/600/800" alt="Estudio I, 2022" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">Estudio I</span>
-          <span class="meta">Carbón sobre papel · 55 × 38 cm</span>
-        </div>
-      </div>
-
-      <div class="obra-item"
-           data-src="https://picsum.photos/seed/lg2206/800/600"
-           data-title="Forma y vacío"
-           data-meta="Óleo sobre papel · 80 × 60 cm · 2022">
-        <div class="obra-img-wrap landscape">
-          <img src="https://picsum.photos/seed/lg2206/800/600" alt="Forma y vacío, 2022" loading="lazy">
-        </div>
-        <div class="obra-caption">
-          <span class="title">Forma y vacío</span>
-          <span class="meta">Óleo sobre papel · 80 × 60 cm</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
 </main>
-
-<!-- ── LIGHTBOX ── -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada">
-  <div class="lightbox-inner">
-    <button class="lightbox-close" id="lb-close" aria-label="Cerrar">&#215;</button>
-    <img id="lb-img" src="" alt="">
-    <p class="lightbox-caption" id="lb-caption"></p>
-  </div>
-  <button class="lightbox-nav" id="lb-prev" aria-label="Obra anterior">&#8592;</button>
-  <button class="lightbox-nav" id="lb-next" aria-label="Obra siguiente">&#8594;</button>
-</div>
 
 <footer>
   <p>&copy; 2025 Lali García Almeyda &mdash; Todos los derechos reservados</p>

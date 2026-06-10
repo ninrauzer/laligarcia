@@ -1,0 +1,148 @@
+{
+  "obras": [
+    {
+      "year": "2024",
+      "title": "Sin título I",
+      "tecnica": "Óleo sobre tela",
+      "dimensiones": "80 × 60 cm",
+      "src": "https://picsum.photos/seed/lg2401/600/800",
+      "orientacion": "portrait"
+    },
+    {
+      "year": "2024",
+      "title": "Composición en azul",
+      "tecnica": "Acrílico sobre tela",
+      "dimensiones": "100 × 80 cm",
+      "src": "https://picsum.photos/seed/lg2402/800/600",
+      "orientacion": "landscape"
+    },
+    {
+      "year": "2024",
+      "title": "Rojo oscuro",
+      "tecnica": "Óleo sobre tela",
+      "dimensiones": "120 × 90 cm",
+      "src": "https://picsum.photos/seed/lg2403/600/800",
+      "orientacion": "portrait"
+    },
+    {
+      "year": "2024",
+      "title": "Estudio para figura",
+      "tecnica": "Técnica mixta",
+      "dimensiones": "50 × 50 cm",
+      "src": "https://picsum.photos/seed/lg2404/600/600",
+      "orientacion": "square"
+    },
+    {
+      "year": "2024",
+      "title": "Tarde de verano",
+      "tecnica": "Óleo sobre tela",
+      "dimensiones": "70 × 55 cm",
+      "src": "https://picsum.photos/seed/lg2405/600/800",
+      "orientacion": "portrait"
+    },
+    {
+      "year": "2024",
+      "title": "Sin título II",
+      "tecnica": "Carbón sobre papel",
+      "dimensiones": "60 × 42 cm",
+      "src": "https://picsum.photos/seed/lg2406/800/600",
+      "orientacion": "landscape"
+    },
+    {
+      "year": "2023",
+      "title": "Figura en reposo",
+      "tecnica": "Óleo sobre tela",
+      "dimensiones": "90 × 70 cm",
+      "src": "https://picsum.photos/seed/lg2301/600/800",
+      "orientacion": "portrait"
+    },
+    {
+      "year": "2023",
+      "title": "Interior III",
+      "tecnica": "Acrílico sobre tela",
+      "dimensiones": "60 × 60 cm",
+      "src": "https://picsum.photos/seed/lg2302/600/600",
+      "orientacion": "square"
+    },
+    {
+      "year": "2023",
+      "title": "Sin título IV",
+      "tecnica": "Técnica mixta",
+      "dimensiones": "80 × 60 cm",
+      "src": "https://picsum.photos/seed/lg2303/800/600",
+      "orientacion": "landscape"
+    },
+    {
+      "year": "2023",
+      "title": "Composición II",
+      "tecnica": "Óleo sobre tela",
+      "dimensiones": "100 × 70 cm",
+      "src": "https://picsum.photos/seed/lg2304/600/800",
+      "orientacion": "portrait"
+    },
+    {
+      "year": "2023",
+      "title": "El jardín",
+      "tecnica": "Óleo sobre tela",
+      "dimensiones": "80 × 60 cm",
+      "src": "https://picsum.photos/seed/lg2305/600/800",
+      "orientacion": "portrait"
+    },
+    {
+      "year": "2023",
+      "title": "Abstracción I",
+      "tecnica": "Acrílico sobre tela",
+      "dimensiones": "70 × 70 cm",
+      "src": "https://picsum.photos/seed/lg2306/600/600",
+      "orientacion": "square"
+    },
+    {
+      "year": "2022",
+      "title": "Primera serie I",
+      "tecnica": "Óleo sobre tela",
+      "dimensiones": "90 × 65 cm",
+      "src": "https://picsum.photos/seed/lg2201/600/800",
+      "orientacion": "portrait"
+    },
+    {
+      "year": "2022",
+      "title": "Composición en rojo",
+      "tecnica": "Acrílico sobre tela",
+      "dimensiones": "110 × 80 cm",
+      "src": "https://picsum.photos/seed/lg2202/800/600",
+      "orientacion": "landscape"
+    },
+    {
+      "year": "2022",
+      "title": "Sin título VI",
+      "tecnica": "Óleo sobre tela",
+      "dimensiones": "75 × 55 cm",
+      "src": "https://picsum.photos/seed/lg2203/600/800",
+      "orientacion": "portrait"
+    },
+    {
+      "year": "2022",
+      "title": "Paisaje urbano",
+      "tecnica": "Técnica mixta",
+      "dimensiones": "60 × 60 cm",
+      "src": "https://picsum.photos/seed/lg2204/600/600",
+      "orientacion": "square"
+    },
+    {
+      "year": "2022",
+      "title": "Estudio I",
+      "tecnica": "Carbón sobre papel",
+      "dimensiones": "55 × 38 cm",
+      "src": "https://picsum.photos/seed/lg2205/600/800",
+      "orientacion": "portrait"
+    },
+    {
+      "year": "2022",
+      "title": "Forma y vacío",
+      "tecnica": "Óleo sobre papel",
+      "dimensiones": "80 × 60 cm",
+      "src": "https://picsum.photos/seed/lg2206/800/600",
+      "orientacion": "landscape"
+    }
+  ]
+}

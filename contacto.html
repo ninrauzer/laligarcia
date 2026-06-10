@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lali García Almeyda — Contacto</title>
   <meta name="description" content="Contacto con Lali García Almeyda, pintora figurativa.">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="contacto">
 
 <header>
   <a class="site-title" href="index.html">Lali García Almeyda</a>
@@ -21,7 +22,6 @@
 </header>
 
 <main>
-
   <div class="contact-wrap">
 
     <div class="contact-intro">
@@ -29,41 +29,32 @@
       <p>Consultas sobre obra, exposiciones y proyectos.</p>
     </div>
 
-    <!-- Formulario: conectar con Formspree, Netlify Forms u otro servicio -->
     <form class="contact-form" action="#" method="POST" id="contact-form">
-
       <div class="form-group">
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" autocomplete="name" required>
       </div>
-
       <div class="form-group">
         <label for="email">Correo electrónico</label>
         <input type="email" id="email" name="email" autocomplete="email" required>
       </div>
-
       <div class="form-group">
         <label for="asunto">Asunto</label>
         <input type="text" id="asunto" name="asunto">
       </div>
-
       <div class="form-group">
         <label for="mensaje">Mensaje</label>
         <textarea id="mensaje" name="mensaje" required></textarea>
       </div>
-
       <button type="submit" class="submit-btn">Enviar</button>
-
     </form>
 
-    <div class="contact-links">
+    <div class="contact-links" id="contact-links">
       <span class="contact-label">O escribí directamente</span>
-      <a href="mailto:contacto@laligarcia.com">contacto@laligarcia.com</a>
-      <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <!-- renderizado por JS desde content/meta.json -->
     </div>
 
   </div>
-
 </main>
 
 <footer>
