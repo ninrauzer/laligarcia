@@ -1,14 +1,3 @@
-/* ── Netlify Identity redirect ─────────────────────────────────────── */
-if (window.netlifyIdentity) {
-  window.netlifyIdentity.on('init', user => {
-    if (!user) {
-      window.netlifyIdentity.on('login', () => {
-        document.location.href = '/admin/';
-      });
-    }
-  });
-}
-
 /* ── Fetch helpers ─────────────────────────────────────────────────── */
 async function fetchJSON(path) {
   const res = await fetch(path);
