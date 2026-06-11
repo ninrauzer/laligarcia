@@ -2,3 +2,5 @@ CLAUDE.md
 .claude/
 .git/
 *.md
+__pycache__/
+*.pyc

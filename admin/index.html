@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel — Lali García Almeyda</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f0efec;
+      color: #1c1c1c;
+      font-size: 0.9rem;
+    }
+
+    /* ─ Header ─ */
+    .header {
+      background: #1c1c1c;
+      color: #fff;
+      padding: 0 24px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-title { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; }
+    .btn-logout {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      padding: 6px 14px;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .btn-logout:hover { background: rgba(255,255,255,0.1); }
+
+    /* ─ Tabs ─ */
+    .tabs {
+      display: flex;
+      background: #fff;
+      border-bottom: 1px solid #e0ddd8;
+      padding: 0 24px;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      padding: 14px 20px;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #999;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .tab-btn:hover { color: #1c1c1c; }
+    .tab-btn.active { color: #1c1c1c; border-bottom-color: #1c1c1c; }
+
+    /* ─ Layout ─ */
+    .main { max-width: 860px; margin: 0 auto; padding: 28px 20px 80px; }
+    .hidden { display: none !important; }
+
+    /* ─ Section header ─ */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .section-header h2 { font-size: 1.1rem; font-weight: 500; }
+
+    /* ─ Cards ─ */
+    .card {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 16px;
+      border: 1px solid #e8e5e0;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .card-header h3 { font-size: 0.85rem; font-weight: 600; color: #555; text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* ─ Buttons ─ */
+    .btn-primary {
+      background: #1c1c1c;
+      color: #fff;
+      border: none;
+      padding: 9px 18px;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: #333; }
+    .btn-primary:disabled { background: #999; cursor: not-allowed; }
+    .btn-secondary {
+      background: none;
+      color: #1c1c1c;
+      border: 1px solid #1c1c1c;
+      padding: 7px 14px;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .btn-secondary:hover { background: #f5f5f5; }
+    .btn-sm { padding: 5px 12px; font-size: 0.68rem; }
+    .btn-edit {
+      background: none;
+      border: 1px solid #888;
+      color: #555;
+      padding: 5px 12px;
+      font-size: 0.68rem;
+      cursor: pointer;
+      margin-right: 6px;
+    }
+    .btn-edit:hover { border-color: #1c1c1c; color: #1c1c1c; }
+    .btn-delete {
+      background: none;
+      border: 1px solid #ddd;
+      color: #c0392b;
+      padding: 5px 12px;
+      font-size: 0.68rem;
+      cursor: pointer;
+    }
+    .btn-delete:hover { border-color: #c0392b; background: #fdf5f5; }
+    .btn-delete-sm {
+      background: none;
+      border: none;
+      color: #bbb;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 0 4px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .btn-delete-sm:hover { color: #c0392b; }
+
+    /* ─ Form fields ─ */
+    .form-row { margin-bottom: 14px; }
+    .form-row label {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 5px;
+    }
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%;
+      padding: 9px 10px;
+      border: 1px solid #ddd;
+      font-size: 0.88rem;
+      color: #1c1c1c;
+      font-family: inherit;
+      outline: none;
+      background: #fff;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: #1c1c1c; }
+    .form-row textarea { resize: vertical; }
+    .hint { font-size: 0.7rem; color: #aaa; margin-top: 4px; }
+
+    /* ─ Save bar ─ */
+    .save-bar { margin-top: 20px; display: flex; justify-content: flex-end; }
+
+    /* ─ Paintings list ─ */
+    .item-card {
+      background: #fff;
+      border: 1px solid #e8e5e0;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+    .item-thumb {
+      width: 52px;
+      height: 66px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #e8e5e0;
+    }
+    .item-info { flex: 1; min-width: 0; }
+    .item-info strong { display: block; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .item-info span { font-size: 0.75rem; color: #888; }
+    .item-actions { flex-shrink: 0; }
+
+    /* ─ Bio paragraphs ─ */
+    .para-item {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .para-item textarea {
+      flex: 1;
+      padding: 8px 10px;
+      border: 1px solid #ddd;
+      font-size: 0.88rem;
+      font-family: inherit;
+      color: #1c1c1c;
+      outline: none;
+      resize: vertical;
+      min-height: 72px;
+    }
+    .para-item textarea:focus { border-color: #1c1c1c; }
+
+    /* ─ Expo list ─ */
+    .expo-item {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .input-year {
+      width: 72px !important;
+      flex-shrink: 0;
+      padding: 8px 8px;
+      border: 1px solid #ddd;
+      font-size: 0.85rem;
+      font-family: inherit;
+      outline: none;
+    }
+    .input-year:focus { border-color: #1c1c1c; }
+    .input-desc {
+      flex: 1;
+      padding: 8px 10px;
+      border: 1px solid #ddd;
+      font-size: 0.85rem;
+      font-family: inherit;
+      outline: none;
+    }
+    .input-desc:focus { border-color: #1c1c1c; }
+
+    /* ─ Bio foto ─ */
+    .bio-foto-wrap { display: flex; align-items: center; gap: 16px; }
+    .bio-foto-preview { width: 80px; height: 100px; object-fit: cover; background: #e8e5e0; }
+    .upload-label { cursor: pointer; display: inline-block; }
+
+    /* ─ Videos ─ */
+    .video-edit-card {
+      background: #fff;
+      border: 1px solid #e8e5e0;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .video-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .video-num { font-size: 0.7rem; font-weight: 600; color: #aaa; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ─ Modal ─ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal {
+      background: #fff;
+      width: 100%;
+      max-width: 480px;
+      max-height: 90vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      border-bottom: 1px solid #e8e5e0;
+      position: sticky;
+      top: 0;
+      background: #fff;
+    }
+    .modal-header h3 { font-size: 0.95rem; font-weight: 600; }
+    .btn-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #aaa;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .btn-close:hover { color: #1c1c1c; }
+    .modal-body { padding: 20px; flex: 1; }
+    .modal-footer {
+      padding: 14px 20px;
+      border-top: 1px solid #e8e5e0;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      position: sticky;
+      bottom: 0;
+      background: #fff;
+    }
+
+    /* ─ Image upload area ─ */
+    .img-upload-area { margin-bottom: 18px; }
+    .img-preview {
+      width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+      background: #f0efec;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* ─ Toast ─ */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #1c1c1c;
+      color: #fff;
+      padding: 10px 22px;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      transition: transform 0.3s ease;
+      z-index: 300;
+      pointer-events: none;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 600px) {
+      .item-actions { display: flex; flex-direction: column; gap: 4px; }
+      .btn-edit, .btn-delete { margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Header -->
+<div class="header">
+  <span class="header-title">Panel de edición · Lali García Almeyda</span>
+  <form action="/admin/logout" method="POST" style="margin:0">
+    <button type="submit" class="btn-logout">Cerrar sesión</button>
+  </form>
+</div>
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tab-btn active" data-tab="pinturas">Pinturas</button>
+  <button class="tab-btn" data-tab="bio">Bio</button>
+  <button class="tab-btn" data-tab="videos">Videos</button>
+  <button class="tab-btn" data-tab="contacto">Contacto</button>
+</div>
+
+<!-- Content -->
+<div class="main">
+
+  <!-- ── PINTURAS ── -->
+  <section id="tab-pinturas" class="tab-content">
+    <div class="section-header">
+      <h2>Pinturas</h2>
+      <button class="btn-primary" onclick="editPintura(-1)">+ Nueva pintura</button>
+    </div>
+    <div id="pinturas-list"></div>
+  </section>
+
+  <!-- ── BIO ── -->
+  <section id="tab-bio" class="tab-content hidden">
+    <div class="section-header"><h2>Bio</h2></div>
+
+    <div class="card">
+      <div class="card-header"><h3>Foto de la artista</h3></div>
+      <div class="bio-foto-wrap">
+        <img id="bio-foto-preview" class="bio-foto-preview" src="" alt="" style="display:none">
+        <label class="btn-secondary upload-label">
+          <span id="bio-foto-btn-text">Cambiar foto</span>
+          <input type="file" accept="image/*" onchange="handleBioFoto(this)" hidden>
+        </label>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Texto biográfico</h3>
+        <button class="btn-secondary btn-sm" onclick="addParagraph()">+ Párrafo</button>
+      </div>
+      <div id="bio-paragraphs"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Exposiciones individuales</h3>
+        <button class="btn-secondary btn-sm" onclick="addExpo('individual')">+ Agregar</button>
+      </div>
+      <div id="expo-individual"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Exposiciones colectivas y reconocimientos</h3>
+        <button class="btn-secondary btn-sm" onclick="addExpo('colectiva')">+ Agregar</button>
+      </div>
+      <div id="expo-colectiva"></div>
+    </div>
+
+    <div class="save-bar">
+      <button id="save-bio-btn" class="btn-primary" onclick="saveBio()">Guardar bio</button>
+    </div>
+  </section>
+
+  <!-- ── VIDEOS ── -->
+  <section id="tab-videos" class="tab-content hidden">
+    <div class="section-header">
+      <h2>Videos</h2>
+      <button class="btn-primary" onclick="addVideo()">+ Agregar video</button>
+    </div>
+    <div id="videos-list"></div>
+    <div class="save-bar">
+      <button id="save-videos-btn" class="btn-primary" onclick="saveVideos()">Guardar videos</button>
+    </div>
+  </section>
+
+  <!-- ── CONTACTO ── -->
+  <section id="tab-contacto" class="tab-content hidden">
+    <div class="section-header"><h2>Contacto</h2></div>
+    <div class="card">
+      <div class="form-row">
+        <label>Email de contacto</label>
+        <input type="email" id="c-email" placeholder="contacto@laligarcia.com">
+      </div>
+      <div class="form-row">
+        <label>Instagram (URL completa)</label>
+        <input type="url" id="c-instagram" placeholder="https://www.instagram.com/laligarcia">
+      </div>
+    </div>
+    <div class="save-bar">
+      <button id="save-meta-btn" class="btn-primary" onclick="saveContacto()">Guardar</button>
+    </div>
+  </section>
+
+</div><!-- /main -->
+
+<!-- ── MODAL: editar pintura ── -->
+<div class="modal-overlay hidden" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modal-title">Editar pintura</h3>
+      <button class="btn-close" onclick="closeModal()">&#215;</button>
+    </div>
+    <div class="modal-body">
+      <div class="img-upload-area">
+        <img id="f-img-preview" class="img-preview" src="" alt="" style="display:none">
+        <label class="btn-secondary upload-label">
+          <span id="upload-btn-text">Subir foto</span>
+          <input type="file" accept="image/*" onchange="handleImageUpload(this)" hidden>
+        </label>
+        <input type="hidden" id="f-src">
+      </div>
+      <div class="form-row">
+        <label>Año *</label>
+        <input type="text" id="f-year" placeholder="2024" maxlength="4">
+      </div>
+      <div class="form-row">
+        <label>Título *</label>
+        <input type="text" id="f-title" placeholder="Sin título I">
+      </div>
+      <div class="form-row">
+        <label>Técnica</label>
+        <input type="text" id="f-tecnica" placeholder="Óleo sobre tela">
+      </div>
+      <div class="form-row">
+        <label>Dimensiones</label>
+        <input type="text" id="f-dimensiones" placeholder="80 × 60 cm">
+      </div>
+      <div class="form-row">
+        <label>Orientación de la imagen</label>
+        <select id="f-orientacion">
+          <option value="portrait">Vertical (retrato)</option>
+          <option value="landscape">Horizontal (paisaje)</option>
+          <option value="square">Cuadrada</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeModal()">Cancelar</button>
+      <button id="modal-save-btn" class="btn-primary" onclick="savePintura()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══ STATE ══════════════════════════════════════════════════════ */
+const state = { obras: [], bio: {}, videos: [], meta: {} };
+let editingIdx = -1;
+
+/* ══ TABS ═══════════════════════════════════════════════════════ */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(s => s.classList.add('hidden'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.remove('hidden');
+  });
+});
+
+/* ══ API ════════════════════════════════════════════════════════ */
+async function apiGet(file) {
+  const r = await fetch(`/api/content/${file}`);
+  if (!r.ok) throw new Error('Error cargando ' + file);
+  return r.json();
+}
+
+async function apiPost(file, data) {
+  const r = await fetch(`/api/content/${file}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  if (!r.ok) throw new Error('Error guardando');
+}
+
+async function apiUpload(file, folder) {
+  const fd = new FormData();
+  fd.append('image', file);
+  const r = await fetch(`/api/upload?folder=${folder}`, { method: 'POST', body: fd });
+  if (!r.ok) throw new Error('Error subiendo');
+  return (await r.json()).path;
+}
+
+/* ══ LOAD ALL ═══════════════════════════════════════════════════ */
+async function loadAll() {
+  try {
+    const [obras, bio, videos, meta] = await Promise.all([
+      apiGet('obras.json'), apiGet('bio.json'),
+      apiGet('videos.json'), apiGet('meta.json')
+    ]);
+    state.obras = obras.obras || [];
+    state.bio = bio;
+    state.videos = videos.videos || [];
+    state.meta = meta;
+    renderPinturas();
+    renderBio();
+    renderVideos();
+    renderContacto();
+  } catch (e) {
+    alert('Error cargando datos: ' + e.message);
+  }
+}
+
+/* ══ UTILS ══════════════════════════════════════════════════════ */
+function esc(s) {
+  return String(s || '')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2500);
+}
+
+function setBtn(id, text, disabled) {
+  const b = document.getElementById(id);
+  if (!b) return;
+  b.textContent = text;
+  b.disabled = disabled;
+}
+
+/* ══ PINTURAS ═══════════════════════════════════════════════════ */
+function renderPinturas() {
+  document.getElementById('pinturas-list').innerHTML =
+    state.obras.length === 0
+      ? '<p style="color:#aaa;padding:20px 0">Todavía no hay pinturas. Hacé clic en "+ Nueva pintura".</p>'
+      : state.obras.map((o, i) => `
+        <div class="item-card">
+          <img class="item-thumb" src="${esc(o.src)}" alt="${esc(o.title)}"
+               onerror="this.style.background='#ddd'">
+          <div class="item-info">
+            <strong>${esc(o.title)}</strong>
+            <span>${esc(o.year)} · ${esc(o.tecnica)} · ${esc(o.dimensiones)}</span>
+          </div>
+          <div class="item-actions">
+            <button class="btn-edit" onclick="editPintura(${i})">Editar</button>
+            <button class="btn-delete" onclick="deletePintura(${i})">Borrar</button>
+          </div>
+        </div>`).join('');
+}
+
+function editPintura(i) {
+  editingIdx = i;
+  const o = i === -1
+    ? { year: new Date().getFullYear(), title: '', tecnica: '', dimensiones: '', src: '', orientacion: 'portrait' }
+    : state.obras[i];
+  document.getElementById('modal-title').textContent = i === -1 ? 'Nueva pintura' : 'Editar pintura';
+  const preview = document.getElementById('f-img-preview');
+  preview.src = o.src || '';
+  preview.style.display = o.src ? 'block' : 'none';
+  document.getElementById('upload-btn-text').textContent = o.src ? 'Cambiar foto' : 'Subir foto';
+  document.getElementById('f-src').value = o.src || '';
+  document.getElementById('f-year').value = o.year || '';
+  document.getElementById('f-title').value = o.title || '';
+  document.getElementById('f-tecnica').value = o.tecnica || '';
+  document.getElementById('f-dimensiones').value = o.dimensiones || '';
+  document.getElementById('f-orientacion').value = o.orientacion || 'portrait';
+  document.getElementById('modal-overlay').classList.remove('hidden');
+  document.getElementById('f-title').focus();
+}
+
+async function handleImageUpload(input) {
+  if (!input.files[0]) return;
+  const span = document.getElementById('upload-btn-text');
+  span.textContent = 'Subiendo...';
+  input.disabled = true;
+  try {
+    const path = await apiUpload(input.files[0], 'obras');
+    document.getElementById('f-src').value = path;
+    const preview = document.getElementById('f-img-preview');
+    preview.src = path;
+    preview.style.display = 'block';
+    span.textContent = 'Cambiar foto';
+  } catch {
+    alert('Error subiendo la imagen. Intentá de nuevo.');
+    span.textContent = 'Subir foto';
+  } finally {
+    input.disabled = false;
+  }
+}
+
+async function savePintura() {
+  const obra = {
+    year: document.getElementById('f-year').value.trim(),
+    title: document.getElementById('f-title').value.trim(),
+    tecnica: document.getElementById('f-tecnica').value.trim(),
+    dimensiones: document.getElementById('f-dimensiones').value.trim(),
+    src: document.getElementById('f-src').value.trim(),
+    orientacion: document.getElementById('f-orientacion').value,
+  };
+  if (!obra.title || !obra.year) return alert('El título y el año son obligatorios.');
+  setBtn('modal-save-btn', 'Guardando...', true);
+  try {
+    if (editingIdx === -1) state.obras.unshift(obra);
+    else state.obras[editingIdx] = obra;
+    await apiPost('obras.json', { obras: state.obras });
+    closeModal();
+    renderPinturas();
+    toast('Pintura guardada ✓');
+  } catch { alert('Error guardando. Intentá de nuevo.'); }
+  finally { setBtn('modal-save-btn', 'Guardar', false); }
+}
+
+async function deletePintura(i) {
+  if (!confirm(`¿Borrar "${state.obras[i].title}"?`)) return;
+  state.obras.splice(i, 1);
+  try {
+    await apiPost('obras.json', { obras: state.obras });
+    renderPinturas();
+    toast('Pintura eliminada');
+  } catch { alert('Error eliminando.'); }
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.add('hidden');
+  editingIdx = -1;
+}
+
+document.getElementById('modal-overlay').addEventListener('click', e => {
+  if (e.target.id === 'modal-overlay') closeModal();
+});
+
+/* ══ BIO ════════════════════════════════════════════════════════ */
+function renderBio() {
+  if (state.bio.foto) {
+    const el = document.getElementById('bio-foto-preview');
+    el.src = state.bio.foto;
+    el.style.display = 'block';
+  }
+  renderParagraphs();
+  renderExpoList('individual');
+  renderExpoList('colectiva');
+}
+
+function renderParagraphs() {
+  document.getElementById('bio-paragraphs').innerHTML =
+    (state.bio.paragraphs || []).map((p, i) => `
+      <div class="para-item">
+        <textarea rows="3" oninput="state.bio.paragraphs[${i}]=this.value">${esc(p)}</textarea>
+        <button class="btn-delete-sm" onclick="deleteParagraph(${i})" title="Borrar párrafo">×</button>
+      </div>`).join('');
+}
+
+function addParagraph() {
+  (state.bio.paragraphs = state.bio.paragraphs || []).push('');
+  renderParagraphs();
+  document.querySelectorAll('#bio-paragraphs textarea').item(-1)?.focus?.();
+  const tas = document.querySelectorAll('#bio-paragraphs textarea');
+  tas[tas.length - 1]?.focus();
+}
+
+function deleteParagraph(i) {
+  state.bio.paragraphs.splice(i, 1);
+  renderParagraphs();
+}
+
+function renderExpoList(type) {
+  document.getElementById(`expo-${type}`).innerHTML =
+    (state.bio[type] || []).map((item, i) => `
+      <div class="expo-item">
+        <input class="input-year" type="text" value="${esc(item.year)}" placeholder="Año"
+          oninput="state.bio['${type}'][${i}].year=this.value" maxlength="4">
+        <input class="input-desc" type="text" value="${esc(item.desc)}" placeholder="Descripción"
+          oninput="state.bio['${type}'][${i}].desc=this.value">
+        <button class="btn-delete-sm" onclick="deleteExpo('${type}',${i})" title="Borrar">×</button>
+      </div>`).join('');
+}
+
+function addExpo(type) {
+  (state.bio[type] = state.bio[type] || []).unshift({ year: String(new Date().getFullYear()), desc: '' });
+  renderExpoList(type);
+  document.querySelector(`#expo-${type} .input-desc`)?.focus();
+}
+
+function deleteExpo(type, i) {
+  state.bio[type].splice(i, 1);
+  renderExpoList(type);
+}
+
+async function handleBioFoto(input) {
+  if (!input.files[0]) return;
+  const span = document.getElementById('bio-foto-btn-text');
+  span.textContent = 'Subiendo...';
+  input.disabled = true;
+  try {
+    const path = await apiUpload(input.files[0], 'bio');
+    state.bio.foto = path;
+    const el = document.getElementById('bio-foto-preview');
+    el.src = path;
+    el.style.display = 'block';
+    span.textContent = 'Cambiar foto';
+  } catch {
+    alert('Error subiendo la imagen. Intentá de nuevo.');
+    span.textContent = 'Cambiar foto';
+  } finally {
+    input.disabled = false;
+  }
+}
+
+async function saveBio() {
+  setBtn('save-bio-btn', 'Guardando...', true);
+  try {
+    await apiPost('bio.json', state.bio);
+    toast('Bio guardada ✓');
+  } catch { alert('Error guardando.'); }
+  finally { setBtn('save-bio-btn', 'Guardar bio', false); }
+}
+
+/* ══ VIDEOS ═════════════════════════════════════════════════════ */
+function renderVideos() {
+  document.getElementById('videos-list').innerHTML =
+    state.videos.length === 0
+      ? '<p style="color:#aaa;padding:20px 0">No hay videos aún.</p>'
+      : state.videos.map((v, i) => `
+        <div class="video-edit-card">
+          <div class="video-card-header">
+            <span class="video-num">Video ${i + 1}</span>
+            <button class="btn-delete-sm" onclick="deleteVideo(${i})" title="Borrar">×</button>
+          </div>
+          <div class="form-row">
+            <label>Título</label>
+            <input type="text" value="${esc(v.title)}" oninput="state.videos[${i}].title=this.value">
+          </div>
+          <div class="form-row">
+            <label>Descripción (tipo · fecha)</label>
+            <input type="text" value="${esc(v.info)}" oninput="state.videos[${i}].info=this.value">
+          </div>
+          <div class="form-row">
+            <label>URL de YouTube o Vimeo</label>
+            <input type="url" value="${esc(v.embedUrl||'')}"
+              placeholder="https://www.youtube.com/embed/..."
+              oninput="state.videos[${i}].embedUrl=this.value">
+            <p class="hint">YouTube: youtube.com/watch?v=XXXX → pegar como youtube.com/embed/XXXX</p>
+          </div>
+        </div>`).join('');
+}
+
+function addVideo() {
+  state.videos.push({ title: '', info: '', embedUrl: '' });
+  renderVideos();
+}
+
+function deleteVideo(i) {
+  if (!confirm('¿Borrar este video?')) return;
+  state.videos.splice(i, 1);
+  renderVideos();
+}
+
+async function saveVideos() {
+  setBtn('save-videos-btn', 'Guardando...', true);
+  try {
+    await apiPost('videos.json', { videos: state.videos });
+    toast('Videos guardados ✓');
+  } catch { alert('Error guardando.'); }
+  finally { setBtn('save-videos-btn', 'Guardar videos', false); }
+}
+
+/* ══ CONTACTO ═══════════════════════════════════════════════════ */
+function renderContacto() {
+  document.getElementById('c-email').value = state.meta.email || '';
+  document.getElementById('c-instagram').value = state.meta.instagram || '';
+}
+
+async function saveContacto() {
+  state.meta.email = document.getElementById('c-email').value.trim();
+  state.meta.instagram = document.getElementById('c-instagram').value.trim();
+  setBtn('save-meta-btn', 'Guardando...', true);
+  try {
+    await apiPost('meta.json', state.meta);
+    toast('Datos guardados ✓');
+  } catch { alert('Error guardando.'); }
+  finally { setBtn('save-meta-btn', 'Guardar', false); }
+}
+
+/* ══ INIT ═══════════════════════════════════════════════════════ */
+loadAll();
+</script>
+</body>
+</html>
